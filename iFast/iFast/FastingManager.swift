@@ -55,6 +55,10 @@ class FastingManager: ObservableObject {
         }
     }
     
+    @Published private(set) var elapsed: Bool = false
+    @Published private(set) var elapsedTime: Double = 0.0
+    @Published private(set) var progress: Double = 0.0
+
     
     @Published private(set) var endTime: Date
     
@@ -87,6 +91,32 @@ class FastingManager: ObservableObject {
         fastingState = fastingState == .fasting ? .feeding : .fasting
         
         startTime = Date()
+        
+        elapsedTime = 0.0
+    }
+    
+    
+    //Track countdown is over or not
+    func track() {
+        
+        guard fastingState != .notStarted else {return}
+        print("now", Date().formatted(.dateTime.month().day().hour().minute().second()))
+        
+        if endTime >= Date() {
+            print("Not Elapsed")
+            elapsed = false
+        } else {
+            print("Elapse")
+            elapsed = true
+        }
+        
+        elapsedTime += 1
+        print("Elapsed Time \(elapsedTime)")
+        
+        let totalTime = fastingState == .fasting ? fastingTime : feedingTime
+        progress = (elapsedTime / totalTime * 100).rounded() / 100
+        print("progress", progress)
+        
     }
     
 }
