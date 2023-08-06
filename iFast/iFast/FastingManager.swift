@@ -63,11 +63,11 @@ class FastingManager: ObservableObject {
     @Published private(set) var endTime: Date
     
     var fastingTime: Double {
-        return fastingPlan.fastingPeriod
+        return fastingPlan.fastingPeriod * 60 * 60
     }
     
     var feedingTime: Double {
-        return 24 - fastingPlan.fastingPeriod
+        return (24 - fastingPlan.fastingPeriod) * 60 * 60
     }
     
     init(){
@@ -84,7 +84,7 @@ class FastingManager: ObservableObject {
         let scheduledTime = calendar.nextDate(after: .now, matching: componeents, matchingPolicy: .nextTime)!
         
         startTime = scheduledTime
-        endTime = scheduledTime.addingTimeInterval(FastingPlan.intermediate.fastingPeriod)
+        endTime = scheduledTime.addingTimeInterval(FastingPlan.intermediate.fastingPeriod * 60 * 60)
     }
     
     func toggleFastingState(){
