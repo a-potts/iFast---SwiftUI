@@ -45,18 +45,39 @@ class FastingManager: ObservableObject {
     
     @Published private(set) var fastingPlan: FastingPlan = .intermediate
     
-    @Published private(set) var startTime: Date
+    @Published private(set) var startTime: Date {
+        didSet {
+            if fastingState == .fasting {
+                endTime = startTime.addingTimeInterval(fastingTime)
+            } else {
+                endTime = startTime.addingTimeInterval(feedingTime)
+            }
+        }
+    }
+    
+    
     @Published private(set) var endTime: Date
+    
+    var fastingTime: Double {
+        return fastingPlan.fastingPeriod
+    }
+    
+    var feedingTime: Double {
+        return 24 - fastingPlan.fastingPeriod
+    }
     
     init(){
         let calendar = Calendar.current
-        var componenets = calendar.dateComponents([.year, .month, .day, .hour], from: Date())
-        componenets.hour = 20 //8 o clock
-        print(componenets)
+//        var componenets = calendar.dateComponents([.year, .month, .day, .hour], from: Date())
+//        componenets.hour = 20 //8 o clock
+//        print(componenets)
+//
+//        let scheduledTime = calendar.date(from: componenets) ?? Date.now //default to now incase of any issues
+//        print("Scheduled Time\(scheduledTime)")
+//
         
-        let scheduledTime = calendar.date(from: componenets) ?? Date.now //default to now incase of any issues
-        print("Scheduled Time\(scheduledTime)")
-        
+        let componeents = DateComponents(hour: 20)
+        let scheduledTime = calendar.nextDate(after: .now, matching: componeents, matchingPolicy: .nextTime)!
         
         startTime = scheduledTime
         endTime = scheduledTime.addingTimeInterval(FastingPlan.intermediate.fastingPeriod)
@@ -64,6 +85,8 @@ class FastingManager: ObservableObject {
     
     func toggleFastingState(){
         fastingState = fastingState == .fasting ? .feeding : .fasting
+        
+        startTime = Date()
     }
     
 }

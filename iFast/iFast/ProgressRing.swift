@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ProgressRing: View {
     
+    @EnvironmentObject var fastingManager: FastingManager
+    
     @State var progress = 0.0
     var body: some View {
         ZStack {
@@ -35,11 +37,14 @@ struct ProgressRing: View {
                 
                 VStack(spacing: 5){
                     Text("Elapsed Time")
-                        .opacity(0.7)
-                    
-                    Text("0:00")
                         .font(.title)
+                    
+                    Text(fastingManager.startTime, style: .timer)
                         .fontWeight(.bold)
+                        .opacity(0.7)
+
+                        
+                        
                     
                 }
                 .padding(.top)
@@ -47,12 +52,16 @@ struct ProgressRing: View {
                 //MARK: Elapsed Time
                 
                 VStack(spacing: 5){
-                    Text("Remaining Time")
-                        .opacity(0.7)
                     
-                    Text("0:00")
+                    Text("Remaining Time")
                         .font(.title2)
+                    
+                    Text(fastingManager.endTime, style: .timer)
+                        .opacity(0.7)
                         .fontWeight(.bold)
+
+                    
+                   
                     
                 }
             }
@@ -71,5 +80,6 @@ struct ProgressRing: View {
 struct ProgressRing_Previews: PreviewProvider {
     static var previews: some View {
         ProgressRing()
+            .environmentObject(FastingManager())
     }
 }

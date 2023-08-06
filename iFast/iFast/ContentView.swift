@@ -58,7 +58,8 @@ struct ContentView: View {
             VStack(spacing: 40) {
                 //MARK: Progress ring
                 ProgressRing()
-                
+                    .environmentObject(fastingManager)
+                //This is needed because the progress ring is a child view of the content view & it uses the same fasting manager class
                 
                 HStack(spacing: 60) {
                     //MARK: Start Time
@@ -78,7 +79,7 @@ struct ContentView: View {
                             .opacity(0.7)
                         
                         //16 is for testing
-                        Text(fastingManager.endTime.addingTimeInterval(16), format: .dateTime.weekday().hour().minute().second())
+                        Text(fastingManager.endTime, format: .dateTime.weekday().hour().minute().second())
                             .fontWeight(.bold)
                     }
                 }
