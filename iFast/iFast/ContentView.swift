@@ -9,13 +9,20 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        ZStack {
+            //Mark: BAckground
+            Color(#colorLiteral(red: 0.03348137066, green: 0.0009218981722, blue: 0.0571668148, alpha: 1))
+                .ignoresSafeArea()
+            
+            content
         }
-        .padding()
+    }
+    
+    var content: some View {
+        VStack {
+            //MARK: Progress ring
+            ProgressRing()
+        }
     }
 }
 

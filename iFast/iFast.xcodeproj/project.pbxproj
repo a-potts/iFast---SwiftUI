@@ -14,6 +14,7 @@
 		53A8C9F02A801ABB005927F8 /* iFastTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A8C9EF2A801ABB005927F8 /* iFastTests.swift */; };
 		53A8C9FA2A801ABB005927F8 /* iFastUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A8C9F92A801ABB005927F8 /* iFastUITests.swift */; };
 		53A8C9FC2A801ABB005927F8 /* iFastUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A8C9FB2A801ABB005927F8 /* iFastUITestsLaunchTests.swift */; };
+		53A8CA092A802516005927F8 /* ProgressRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A8CA082A802516005927F8 /* ProgressRing.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		53A8C9F52A801ABB005927F8 /* iFastUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iFastUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		53A8C9F92A801ABB005927F8 /* iFastUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iFastUITests.swift; sourceTree = "<group>"; };
 		53A8C9FB2A801ABB005927F8 /* iFastUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iFastUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		53A8CA082A802516005927F8 /* ProgressRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressRing.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 			children = (
 				53A8C9DE2A801ABA005927F8 /* iFastApp.swift */,
 				53A8C9E02A801ABA005927F8 /* ContentView.swift */,
+				53A8CA082A802516005927F8 /* ProgressRing.swift */,
 				53A8C9E22A801ABB005927F8 /* Assets.xcassets */,
 				53A8C9E42A801ABB005927F8 /* Preview Content */,
 			);
@@ -259,6 +262,7 @@
 			files = (
 				53A8C9E12A801ABA005927F8 /* ContentView.swift in Sources */,
 				53A8C9DF2A801ABA005927F8 /* iFastApp.swift in Sources */,
+				53A8CA092A802516005927F8 /* ProgressRing.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
